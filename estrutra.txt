@@ -1,0 +1,23 @@
+1- Login
+    *criar um model de usuarios
+        nome 
+        email
+        data de criação
+        comentario
+    
+2- Itens
+    *criar Itens
+        -criar nome
+        -criar preço
+
+    *atualizar dados do item
+    *excluir item
+    *listar Itens
+
+
+
+
+
+
+
+    
