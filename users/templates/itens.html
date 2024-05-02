@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
+    <title>Registrar Item</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,8 +12,8 @@
             background-color: #f5f5f5;
         }
 
-        .login-container {
-            max-width: 400px;
+        .itens-container {
+            max-width: 500px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -21,19 +21,19 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .login-container h2 {
-            margin-bottom: 20px;
+        h2 {
             color: #333;
             text-align: center;
+            margin-bottom: 20px;
         }
 
-        .login-form {
+        .itens-form {
             display: flex;
             flex-direction: column;
         }
 
-        .login-form input[type="text"],
-        .login-form input[type="password"] {
+        .itens-form input[type="text"],
+        .itens-form input[type="number"] {
             margin-bottom: 15px;
             padding: 10px;
             border: 1px solid #ccc;
@@ -41,7 +41,7 @@
             font-size: 16px;
         }
 
-        .login-form input[type="submit"] {
+        .itens-form input[type="submit"] {
             padding: 10px;
             border: none;
             border-radius: 5px;
@@ -52,47 +52,22 @@
             transition: background-color 0.3s;
         }
 
-        .login-form input[type="submit"]:hover {
+        .itens-form input[type="submit"]:hover {
             background-color: #0056b3;
-        }
-
-        .error-message {
-            color: red;
-            text-align: center;
-            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-<div class="login-container">
-    <h2>Tela de Login</h2>
-    {% if error_message %}
-    <p class="error-message">{{ error_message }}</p>
-    {% endif %}
-    <form class="login-form" action="{% url 'login' %}" method="post">
+<div class="itens-container">
+    <h2>Registrar Item</h2>
+    <form class="itens-form" action="{% url 'itens' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="Usuário" required>
-        <input type="password" name="password" placeholder="Senha" required>
-        <input type="submit" value="Entrar">
+        <input type="text" name="nome_item" placeholder="Nome do Item" required>
+        <input type="number" name="preco_item" placeholder="Preço do Item" required>
+        <input type="submit" value="Registrar Item">
     </form>
 </div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

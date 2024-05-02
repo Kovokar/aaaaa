@@ -13,7 +13,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
@@ -29,13 +29,14 @@
 
         .btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 20px 40px;
             margin: 0 10px;
             background-color: #007bff;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 25px;
         }
 
         .btn:hover {
@@ -49,8 +50,9 @@
     {% csrf_token %}
     <h1>Logado com Sucesso</h1>
     <div class="btn-container">
-        <a href="/gerenciar_itens" class="btn">Gerenciar Itens</a>
-        <a href="/gerenciar_pedidos" class="btn">Gerenciar Pedidos</a>
+        <a href="/itens" class="btn">Itens</a>
+        <a href="/gerenciar_pedidos" class="btn">INUTIO POR HORA</a>
+        <a href="/list_users" class="btn">Atualizar Usuário</a>
     </div>
 </div>
 
