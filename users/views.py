@@ -36,6 +36,7 @@ def register_view(request):
 
     return render(request, 'register.html')
     
+    
 def list_users(request):
     users = User.objects.all()
     return render(request, 'list_users.html', {'users': users})
