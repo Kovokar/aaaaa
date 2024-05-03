@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from .models import Pedidos
+from django.contrib.auth.decorators import login_required
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -14,7 +16,7 @@ def login_view(request):
         else:
             # Se as credenciais estiverem incorretas, exibir uma mensagem de erro
             return render(request, 'login.html', {'error_message': 'Credenciais inválidas. Tente novamente.'})
-    return render(request, 'login.html')
+    return render(request, 'registration/login.html')
 
 
 def register_view(request):
@@ -29,25 +31,33 @@ def register_view(request):
         if User.objects.filter(username=username).exists():
             return render(request, 'register.html', {'error_message': 'Este nome de usuário já está em uso. Tente outro.'})
 
+        if User.objects.filter(password=password).exists():
+            return render(request, 'register.html', {'error_message': 'Esta senha já está em uso. Tente outra.'})
+        
         user = User.objects.create_superuser(username=username, email='', password=password)
         print('id?',User.id)
         login(request, user)
         return redirect('login')  # Redirecionar para a página principal após o registro
 
     return render(request, 'register.html')
-    
-    
-def list_users(request):
-    users = User.objects.all()
-    return render(request, 'list_users.html', {'users': users})
+
 
 def home_view(request):
     return render(request, 'home.html')
 
+
+@login_required    
+def list_users(request):
+    users = User.objects.all()
+    return render(request, 'list_users.html', {'users': users})
+
+
+@login_required  
 def logado_view(request):
     return render(request, 'logado.html')
 
 
+@login_required  
 def cadastro_items(request):
 
 
